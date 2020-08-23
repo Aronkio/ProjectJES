@@ -99,8 +99,9 @@ class App extends Component {
             
     }
    
-    deleteTask(id){
-        console.log("eliminando", id);
+    deleteTask(id) {
+        if (confirm('¿Esta seguro de Borra la Fiscalia?')) {
+            console.log("eliminando", id);
         fetch(`/api/tasks/${id}`, {
             method: 'DELETE',
             headers:{
@@ -114,6 +115,8 @@ class App extends Component {
             console.log(data);
             this.fetchTasks();
         })
+        }
+        
     }
 
     handleChange(e){
@@ -201,8 +204,8 @@ class App extends Component {
                                                     <td>{task.DireccionFiscalia}</td>
                                                     <td>{task.TelefonoFiscalia}</td>
                                                     <td>
-                                                    <button onClick={() => this.editTask(task._id)} className="btn light-blue darken-4" style={{margin: '4px'}}> <i className="material-icons">edit</i>  Editar</button>
-                                                        <button className="btn light-blue darken-4" onClick={()=> this.deleteTask(task._id)}> <i className="material-icons">delete</i>  Eliminar</button>
+                                                    <button onClick={() => this.editTask(task._id)} className="btn light-blue darken-4" style={{margin: '4px'}}> <i className="material-icons">edit</i></button>
+                                                    <button className="btn light-blue darken-4" onClick={()=> this.deleteTask(task._id)}> <i className="material-icons">delete</i></button>
                                                         
                                                         
                                                     </td>
