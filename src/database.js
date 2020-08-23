@@ -6,7 +6,7 @@ const config = {
     useFindAndModify: false
 };
 
-const URI = 'mongodb://localhost/mern-tasks';
+const URI = 'mongodb://localhost/ProjectJes';
 
 mongoose.connect(URI, config)
     .then(db => console.log('DB Conectada'))

@@ -18,29 +18,29 @@ router.get('/:id', async(req, res) => {
 })
 
 router.post('/', async(req, res) => {
-    const { title, description } = req.body;
-    const task = new Task({ title, description })
+    const { NodeFiscalia, NombreFiscalia, DireccionFiscalia, TelefonoFiscalia } = req.body;
+    const task = new Task({ NodeFiscalia, NombreFiscalia, DireccionFiscalia, TelefonoFiscalia })
     await task.save();
-    res.json({ status: 'Task Guardada' });
+    res.json({ status: 'Fiscalia Guardada' });
 });
 
 router.put('/:id', async(req, res) => {
 
-    const { title, description } = req.body;
-    let datosForm = { title, description };
+    const { NodeFiscalia, NombreFiscalia, DireccionFiscalia, TelefonoFiscalia } = req.body;
+    let datosForm = { NodeFiscalia, NombreFiscalia, DireccionFiscalia, TelefonoFiscalia };
     let id = req.params.id;
     await Task.findByIdAndUpdate({ _id: id }, datosForm, { useFindAndModify: false })
         .then(() => {
-            res.json({ status: 'updated.' });
+            res.json({ status: 'Fiscalia Actualizada' });
         })
         .catch(err => {
-            res.json({ status: 'Problem when try update one Task.' + err });
+            res.json({ status: 'Problema al Actualizar la Fiscalia' + err });
         });
 });
 
 router.delete('/:id', async(req, res) => {
     await Task.findByIdAndRemove(req.params.id)
-    res.json({ status: 'Eliminado' })
+    res.json({ status: 'Fiscalia Eliminada' })
 })
 
 
